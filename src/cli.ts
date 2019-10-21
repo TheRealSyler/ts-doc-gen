@@ -76,11 +76,11 @@ ${codeBlock}
         linkRes += `  - [${link}](#${link.toLowerCase()})\n`;
       }
     }
-    const generated = `<span id="DOC_GENERATION_MARKER_0"></span>\n${linkRes}${linkRes +
-      rawText}\n<span id="DOC_GENERATION_MARKER_1"></span>`;
+    const generated = `<span id="DOC_GENERATION_MARKER_0"></span>\n${linkRes}${rawText}\n<span id="DOC_GENERATION_MARKER_1"></span>`;
     writeFile(this.out, input.replace(/DOC_INSERTION_MARKER/, generated), err => {
       if (err) throw err;
       success(`Successfully Generated Docs at ${this.out}`);
+      console.log(linkRes);
     });
   }
 }
