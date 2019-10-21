@@ -80,7 +80,6 @@ ${codeBlock}
     writeFile(this.out, input.replace(/DOC_INSERTION_MARKER/, generated), err => {
       if (err) throw err;
       success(`Successfully Generated Docs at ${this.out}`);
-      console.log(linkRes);
     });
   }
 }
