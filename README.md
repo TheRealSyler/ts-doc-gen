@@ -10,3 +10,6 @@ just run `tdg`.
 | ------------------- | ----------- | ------------------------------------------------ |
 | `--out OUTPUT_FILE` | `README.md` | Relative path to the output file with extension. |
 | `--dir DIR`         | `dist`      | Relative path to the input dir.                  |
+| `--name NAME`       | `Docs`      | Header name.                                     |
+| `--exclude FILES`   | `''`        | Comma separated list of files to exclude.        |
+| `-h --help`         |             | Displays help Message.                           |
