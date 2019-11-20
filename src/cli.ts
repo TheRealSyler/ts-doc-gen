@@ -2,13 +2,14 @@
 
 import { Walk } from './utils';
 import { failure, success } from './messages';
-import { readFileSync, statSync, writeFile, existsSync } from 'fs';
+import { readFileSync, writeFile, existsSync } from 'fs';
 
 const codeBlock = '```';
 class Start {
   args: string[];
   dir = 'dist';
   out = 'README.md';
+  exclude = '';
   constructor() {
     const [, , ...argumentArr] = process.argv;
     this.args = [];
@@ -19,13 +20,17 @@ class Start {
       if (arg.toLowerCase().startsWith('--out')) {
         argumentArr[i + 1] ? (this.out = argumentArr[i + 1]) : failure(`--out ${argumentArr[i + 1]} not Found.`);
       }
+      if (arg.toLowerCase().startsWith('--exclude')) {
+        argumentArr[i + 1] ? (this.out = argumentArr[i + 1]) : failure(`--exclude ${argumentArr[i + 1]} not Found.`);
+      }
       this.args[i] = arg === undefined ? '' : arg.toLowerCase();
     });
     this.run();
   }
   private async run() {
     const dir = await Walk(`./${this.dir}`);
-    const filesPaths = dir.filter(fileName => fileName.endsWith('d.ts'));
+    const excluded = this.exclude.split(',');
+    const filesPaths = dir.filter(fileName => fileName.endsWith('d.ts') && excluded.indexOf(fileName) === -1);
     let input = 'DOC_INSERTION_MARKER';
     if (existsSync(this.out)) {
       const inputFile = readFileSync(this.out).toString();
@@ -47,7 +52,7 @@ class Start {
       let m: RegExpExecArray;
       if (!fileName.endsWith('.internal')) {
         links.push(`#${fileName}`);
-        let res = `\n# ${fileName}
+        let res = `\n## ${fileName}
 
 `;
         while ((m = declarationRegex.exec(fileText)) !== null) {
