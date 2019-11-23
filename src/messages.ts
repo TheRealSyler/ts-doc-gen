@@ -23,11 +23,12 @@ export const logger = new Logger<{ help: LoggerType }>({
       `--out: OUTPUT_FILE:Relative path to the output file with extension.
 --dir: DIR:        Relative path to the input dir.
 --name: NAME:       Header name.
---exclude: FILES:      Comma separated list of files to exclude.
+--exclude: FILES:      Comma separated list of files to exclude, cannot be used with --include
+--include: FILES:      Comma separated list of files to include, cannot be used with --exclude
 -h: :           Displays this Message.`,
       ':',
       11,
-      70
+      90
     )
   }
 });

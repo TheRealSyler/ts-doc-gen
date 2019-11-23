@@ -21,9 +21,11 @@
   "dependencies": {
     "@sorg/log": "^1.0.0",
     "chalk": "^2.4.2",
+    "suf-node": "^1.0.0",
     "typescript": "^3.6.3"
   },
   "devDependencies": {
-    "@types/node": "^12.7.7"
+    "@types/node": "^12.7.7",
+    "tslib": "^1.10.0"
   }
 }
