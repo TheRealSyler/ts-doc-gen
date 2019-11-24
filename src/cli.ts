@@ -63,9 +63,8 @@ class Start {
       let m: RegExpExecArray;
       if (!fileName.endsWith('.internal')) {
         links.push(`#${fileName}`);
-        let res = `\n### ${fileName}
+        let res = `\n### ${fileName}\n`;
 
-`;
         while ((m = declarationRegex.exec(fileText)) !== null) {
           if (m.index === declarationRegex.lastIndex) {
             declarationRegex.lastIndex++;
@@ -85,9 +84,9 @@ ${codeBlock}
       }
     }
 
-    const generated = `<span id="DOC_GENERATION_MARKER_0"></span>\n# ${this.name}\n${this.createNav(
+    const generated = `<span id="DOC_GENERATION_MARKER_0"></span>\n\n# ${this.name}\n${this.createNav(
       links
-    )}${rawText}\n*Generated With* **[ts-doc-gen](https://www.npmjs.com/package/ts-doc-gen)**\n<span id="DOC_GENERATION_MARKER_1"></span>`;
+    )}${rawText}\n_Generated With_ **[ts-doc-gen](https://www.npmjs.com/package/ts-doc-gen)**\n<span id="DOC_GENERATION_MARKER_1"></span>`;
     writeFile(this.out, input.replace(/DOC_INSERTION_MARKER/, generated), err => {
       if (err) throw err;
       success(`Successfully Generated Docs at ${this.out}`);
