@@ -40,6 +40,7 @@ class Start {
       this.run();
     }
   }
+
   private async run() {
     const filesPaths = await this.getPaths();
     let input = 'DOC_INSERTION_MARKER';
@@ -86,7 +87,7 @@ ${codeBlock}
 
     const generated = `<span id="DOC_GENERATION_MARKER_0"></span>\n\n# ${this.name}\n${this.createNav(
       links
-    )}${rawText}\n_Generated With_ **[ts-doc-gen](https://www.npmjs.com/package/ts-doc-gen)**\n<span id="DOC_GENERATION_MARKER_1"></span>`;
+    )}${rawText}\n_Generated with_ **[ts-doc-gen](https://www.npmjs.com/package/ts-doc-gen)**\n<span id="DOC_GENERATION_MARKER_1"></span>`;
     writeFile(this.out, input.replace(/DOC_INSERTION_MARKER/, generated), err => {
       if (err) throw err;
       success(`Successfully Generated Docs at ${this.out}`);

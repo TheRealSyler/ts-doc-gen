@@ -1,5 +1,7 @@
 ## ts-doc-gen
 
+> INFO: This package is deprecated please use [suf-cli](https://www.npmjs.com/package/suf-cli) instead.
+
 cli for generating markdown docs from `d.ts` files.
 
 ### Usage
